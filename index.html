@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Country Simulation</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="images/icon-192x192.png" type="image/png">
+</head>
+<body>
+<div id="content">
+<h2>Quest</h2>
+<form action="s.html">
+<input type="text" placeholder="Search" name="q" autocomplete="off" onclick="begin()" id="input" onkeyup="suggest(); smartSuggest()">
+</form>
+<div id="autocomplete"></div>
+</div>
+<!-- for pwa -->
+<script>
+	window.addEventListener('load', () => {
+	registerSW();
+	});
+
+	// Register the Service Worker
+	async function registerSW() {
+	if ('serviceWorker' in navigator) {
+		try {
+		await navigator
+				.serviceWorker
+				.register('serviceworker.js');
+		}
+		catch (e) {
+		console.log('SW registration failed');
+		}
+	}
+	}
+</script>
+<script src="https://lb123658.github.io/zearch/plus/library.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
