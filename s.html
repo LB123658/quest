@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quest - results</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="images/icon-192x192.png" type="image/png">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body {
+  background: #202124;
+  overflow-x: hidden;
+   user-select: none;
+  -webkit-user-select: none;
+  text-align: center;
+}
+* {
+  outline: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+h2 {
+  font-size: 100px;
+}
+input {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 50px;
+  color: white;
+  width: 80%;
+  border: none;
+  background: #303134;
+  padding: 20px 10% 20px 10%;
+}
+p {
+  font-size: 50px;
+}
+button {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 50px;
+  color: #8ab4f7;
+  width: 100%;
+  background: #303134;
+  margin-top: 10px;
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+span {
+  color: grey;
+  font-size: 45px;
+}
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+<input type="text" placeholder="Search" autocomplete="off" onclick="home()">
+
+<div id="useful"></div>
+<div id="info"></div>
+<div id="results"></div>
+<script src="https://lb123658.github.io/zearch/plus/library.js"></script>
+<script>
+var input = document.getElementById("input");
+var auto = document.getElementById("autocomplete");
+var storedLanguage = localStorage.getItem("quest_language");
+var results = document.getElementById("results");
+var info = document.getElementById("info");
+var useful = document.getElementById("useful");
+
+input.value = decodeURIComponent(location.search.split("=")[1].replace(/\+/gi, " "));
+var s = input.value.toLowerCase();
+
+// load results
+function r(z) {
+var b = document.createElement("a");
+b.href = z;
+b.innerHTML = "<button><img src='https://external-content.duckduckgo.com/ip3/" + z.split("//")[1] + ".ico' loading='lazy'></img><span>▸" + z + "</span><br>" + z.split("//")[1] + "</button>";
+results.appendChild(b);
+  if (input.value.toLowerCase().indexOf(z.toLowerCase().split("//")[1].split(".")[0]) < 0) {
+    b.remove();
+  } else if (z.split("//")[1].split(".")[0].length < 1) {
+    b.remove();
+  }
+}
+
+
+function loadResults() {
+  for (let i = 0; i < library.length ;i++) {
+    r(library[i]);
+  }
+}
+setTimeout(loadResults, 10);
+
+var language = {
+    place: "Search",
+    wiki: "en",
+    num: "Results"
+  }
+input.placeholder = language.place;
+
+//load info section, search data and suggested links
+document.body.onload = function(){sizeInfo();};
+document.body.onresize = function(){sizeInfo();};
+function sizeInfo() {
+info.style.width = window.innerWidth - 653 + "px";
+}
+
+setTimeout(function() {
+if (input.value.indexOf(" ") < 0) {
+var term = input.value.slice(0,1).toUpperCase() + input.value.slice(1,input.value.length).toLowerCase();
+info.innerHTML = "<button>>> " + results.children.length + "&nbsp;" + language.num + "</button><a href='https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "' target='_blank'><button><img src='https://external-content.duckduckgo.com/ip3/wikipedia.org.ico' loading='lazy'></img><span>▸https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "</span><br>" + term + " - Wikipedia</button></a>  <a href='https://" + input.value.toLowerCase() + ".com' target='_blank'><button><img src='https://external-content.duckduckgo.com/ip3/" + input.value.toLowerCase() + ".com.ico' loading='lazy'></img><span>▸https://" + input.value.toLowerCase() + ".com</span><br>" + input.value.toLowerCase() + ".com</button></a>";
+}
+},100);
+
+//home function
+function home() {
+var l = document.createElement("a");
+l.href="index.html?src=" + location.search.split("=")[1];
+document.body.appendChild(l);
+l.click();
+l.remove();
+}
+</script>
+</body>
+</html>
