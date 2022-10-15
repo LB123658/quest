@@ -62,7 +62,7 @@ img {
 </style>
 </head>
 <body>
-<input type="text" placeholder="Search" autocomplete="off" onclick="home()">
+<input type="text" placeholder="Search" autocomplete="off" onclick="home()" id="input">
 
 <div id="useful"></div>
 <div id="info"></div>
@@ -71,7 +71,6 @@ img {
 <script>
 var input = document.getElementById("input");
 var auto = document.getElementById("autocomplete");
-var storedLanguage = localStorage.getItem("quest_language");
 var results = document.getElementById("results");
 var info = document.getElementById("info");
 var useful = document.getElementById("useful");
