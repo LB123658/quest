@@ -121,8 +121,8 @@ l.remove();
 }
 //load google results
 setTimeout(function() {
-  if (s.indexOf(" google") != -1) {
-    useful.innerHTML = "<a href='https://" + s.split(" ")[0] + ".google.com'><button><img src='https://external-content.duckduckgo.com/ip3/" + s.split(" ")[0] + ".google.com.ico' loading='lazy'></img><span>&nbsp;▸https://" + s.split(" ")[0] + ".google.com</span><br>Google " + s.split(" ")[0] + "</button></a><br><br>";
+  if (s.indexOf("google ") != -1 && s.split("google ")[1].split(" ")[1].length < 1) {
+    useful.innerHTML = "<a href='https://" + s.split("google ")[1] + ".google.com'><button><img src='https://external-content.duckduckgo.com/ip3/" + s.split("google ")[1] + ".google.com.ico' loading='lazy'></img><span>&nbsp;▸https://" + s.split("google ")[1] + ".google.com</span><br>Google " + s.split("google ")[1] + "</button></a><br><br><br>";
   }
 }, 80);
 </script>
