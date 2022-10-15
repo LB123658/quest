@@ -41,7 +41,7 @@
 <body>
 <div id="content">
 <h2>Quest</h2>
-<form action="s.html">
+<form action="s.html" id="form">
 <input type="text" placeholder="Search" name="q" autocomplete="off" onclick="begin()" id="input" onkeyup="suggest(); smartSuggest()">
 </form>
 <div id="autocomplete"></div>
@@ -76,9 +76,9 @@ var tab = document.getElementById("tab");
 function loadMenu() {
 tab.innerHTML = `
 <a href="index.html">
-  <button class="tabButton"><span class="material-icons" style="font-size: 60px; color: #8ab4f7;">home</span></button>
+  <button class="tabButton" style="background: #8ab4f7;"><span class="material-icons" style="font-size: 60px; color: #202124;">home</span></button>
   </a>
-<button class="tabButton" style="background: #8ab4f7;" onclick="input.click();"><span class="material-icons" style="font-size: 60px; color: #202124;">search</span></button>
+<button class="tabButton" onclick="input.click();"><span class="material-icons" style="font-size: 60px; color: #8ab4f7;">search</span></button>
 <button class="tabButton" id="share"><span class="material-icons" style="font-size: 60px; color: #8ab4f7;">share</span></button>
 
 <!-- hidden -->
