@@ -5,6 +5,37 @@
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="images/icon-192x192.png" type="image/png">
+<style>
+#tab {
+ position: fixed;
+ z-index: 1;
+ bottom: 0px;
+ left: 0px;
+ width: 100%;
+ height: 140px;
+ background: #202124;
+ overflow: hidden;
+}
+.tabButton {
+  width: 33.3%;
+  height: 280px;
+  border-radius: 60%;
+  margin-top: -70px;
+  float: left;
+  background: transparent;
+  border: none;
+  text-align: center;
+  transform: scale(1.2);
+  transition: background 0.3s;
+}
+.tabButton:hover {
+  background: #303134;
+}
+.tabButton span {
+  font-size: 60px;
+  color: #8ab4f7;
+}
+</style>
 </head>
 <body>
 <div id="content">
@@ -14,6 +45,8 @@
 </form>
 <div id="autocomplete"></div>
 </div>
+	
+<div id="tab"></div>
 <!-- for pwa -->
 <script>
 	window.addEventListener('load', () => {
@@ -33,6 +66,45 @@
 		}
 	}
 	}
+</script>
+<script>
+var input = document.getElementById("input");
+var tab = document.getElementById("tab");
+	
+//load tab bar at bottom
+function loadMenu() {
+tab.innerHTML = `
+<a href="index.html">
+  <button class="tabButton"><span class="material-icons" style="font-size: 60px; color: #8ab4f7;">home</span></button>
+  </a>
+<button class="tabButton" style="background: #8ab4f7;" onclick="input.click();"><span class="material-icons" style="font-size: 60px; color: #202124;">search</span></button>
+<button class="tabButton" id="share"><span class="material-icons" style="font-size: 60px; color: #8ab4f7;">share</span></button>
+
+<!-- hidden -->
+<p hidden id="resultPara"></p>
+`;
+}
+loadMenu();
+
+//sharing function
+const shareData = {
+  title: input.value + ' - Quest',
+  text: '',
+  url: window.location.href
+}
+
+const btn = document.getElementById("share")
+const resultPara = document.getElementById("resultPara");
+
+// Share must be triggered by "user activation"
+btn.addEventListener('click', async () => {
+  try {
+    await navigator.share(shareData);
+    resultPara.textContent = 'MDN shared successfully';
+  } catch (err) {
+    resultPara.textContent = `Error: ${err}`;
+  }
+});
 </script>
 <script src="https://lb123658.github.io/zearch/plus/library.js"></script>
 <script src="app.js"></script>
