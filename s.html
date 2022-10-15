@@ -104,13 +104,6 @@ var language = {
   }
 input.placeholder = language.place;
 
-//load info section, search data and suggested links
-document.body.onload = function(){sizeInfo();};
-document.body.onresize = function(){sizeInfo();};
-function sizeInfo() {
-info.style.width = window.innerWidth - 653 + "px";
-}
-
 setTimeout(function() {
 if (input.value.indexOf(" ") < 0) {
 var term = input.value.slice(0,1).toUpperCase() + input.value.slice(1,input.value.length).toLowerCase();
