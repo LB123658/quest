@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +5,6 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="images/icon-192x192.png" type="image/png">
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
   background: #202124;
@@ -82,7 +80,7 @@ var s = input.value.toLowerCase();
 function r(z) {
 var b = document.createElement("a");
 b.href = z;
-b.innerHTML = "<button><img src='https://external-content.duckduckgo.com/ip3/" + z.split("//")[1] + ".ico' loading='lazy'></img><span>▸" + z + "</span><br>" + z.split("//")[1] + "</button>";
+b.innerHTML = "<button><img src='https://external-content.duckduckgo.com/ip3/" + z.split("//")[1] + ".ico' loading='lazy'></img><span>&nbsp;▸" + z + "</span><br>" + z.split("//")[1] + "</button>";
 results.appendChild(b);
   if (input.value.toLowerCase().indexOf(z.toLowerCase().split("//")[1].split(".")[0]) < 0) {
     b.remove();
@@ -116,7 +114,7 @@ info.style.width = window.innerWidth - 653 + "px";
 setTimeout(function() {
 if (input.value.indexOf(" ") < 0) {
 var term = input.value.slice(0,1).toUpperCase() + input.value.slice(1,input.value.length).toLowerCase();
-info.innerHTML = "<button>>> " + results.children.length + "&nbsp;" + language.num + "</button><a href='https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "' target='_blank'><button><img src='https://external-content.duckduckgo.com/ip3/wikipedia.org.ico' loading='lazy'></img><span>▸https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "</span><br>" + term + " - Wikipedia</button></a>  <a href='https://" + input.value.toLowerCase() + ".com' target='_blank'><button><img src='https://external-content.duckduckgo.com/ip3/" + input.value.toLowerCase() + ".com.ico' loading='lazy'></img><span>▸https://" + input.value.toLowerCase() + ".com</span><br>" + input.value.toLowerCase() + ".com</button></a>";
+info.innerHTML = "<button>Returned " + results.children.length + "&nbsp;" + language.num + "</button><a href='https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "'><button><img src='https://external-content.duckduckgo.com/ip3/wikipedia.org.ico' loading='lazy'></img><span>&nbsp;▸https://" + language.wiki + ".wikipedia.org/w/index.php?search=" + term + "</span><br>" + term + " - Wikipedia</button></a>  <a href='https://" + input.value.toLowerCase() + ".com'><button><img src='https://external-content.duckduckgo.com/ip3/" + input.value.toLowerCase() + ".com.ico' loading='lazy'></img><span>&nbsp;▸https://" + input.value.toLowerCase() + ".com</span><br>" + input.value.toLowerCase() + ".com</button></a>";
 }
 },100);
 
@@ -128,6 +126,12 @@ document.body.appendChild(l);
 l.click();
 l.remove();
 }
+//load google results
+setTimeout(function() {
+if (s.indexOf(" google") != 0) {
+  useful.innerHTML = <a href='https://" + s.split(" ")[0] + ".google.com'><button><img src='https://external-content.duckduckgo.com/ip3/" + s.split(" ")[0] + ".google.com.ico' loading='lazy'></img><span>&nbsp;▸https://" + s.split(" ")[0] + ".google.com</span><br>Google " + s.split(" ")[0] + "</button></a>";
+}
+}, 80);
 </script>
 </body>
 </html>
